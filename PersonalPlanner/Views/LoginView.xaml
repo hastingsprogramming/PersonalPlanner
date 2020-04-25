@@ -6,17 +6,64 @@
         xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
         xmlns:local="clr-namespace:PersonalPlanner.Views"
         mc:Ignorable="d" 
-        d:DesignHeight="450" d:DesignWidth="800"
-        WindowStyle="None" AllowsTransparency="True" Background="Transparent"
-        Foreground="{DynamicResource MaterialDesignDarkForeground}">
-    <materialDesign:Card Background="{DynamicResource MaterialDesignDarkBackground}" UniformCornerRadius="5" Padding="50">
+        Height="698" Width="467"
+        WindowStyle="None" AllowsTransparency="True" Background="Transparent" BorderBrush="Black" BorderThickness="2"
+        Foreground="{DynamicResource MaterialDesignDarkForeground}" FontSize="20"
+        MouseDown="InitiateWindowMovement">
+    <materialDesign:Card Background="{DynamicResource MaterialDesignDarkBackground}" UniformCornerRadius="5" Padding="50"
+                         Height="710" Width="468">
         <Grid>
             <Grid.RowDefinitions>
+                <RowDefinition Height="282" />
+                <RowDefinition Height="76" />
+                <RowDefinition Height="76" />
+                <RowDefinition Height="76" />
+                <RowDefinition Height="76" />
                 <RowDefinition Height="1*" />
             </Grid.RowDefinitions>
             <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="68" />
+                <ColumnDefinition Width="232" />
+                <ColumnDefinition Width="68" />
             </Grid.ColumnDefinitions>
-                <Button x:Name="CloseWindow" Content="Close" />
+
+            <!--  Row 0 -->
+            <Ellipse Grid.Row="0" Grid.Column="1" Height="232" Stroke="Red" VerticalAlignment="Top">
+                <!-- <Image /> -->
+            </Ellipse>
+
+            <!-- Row 1 -->
+            <Ellipse Grid.Row="1" Grid.Column="0" Height="43" Width="43" Stroke="Red" VerticalAlignment="Top" HorizontalAlignment="Left">
+                <!-- <Image /> -->
+            </Ellipse>
+            <TextBox x:Name="Username" materialDesign:HintAssist.Hint="Username"
+                     Grid.Row="1" Grid.Column="1" Grid.ColumnSpan="2" 
+                     VerticalAlignment="Top" Padding="2 0 0 0"/>
+
+            <!-- Row 2 -->
+            <Ellipse Grid.Row="2" Grid.Column="0" Height="43" Width="43" Stroke="Red" VerticalAlignment="Top" HorizontalAlignment="Left">
+                <!-- <Image /> -->
+            </Ellipse>
+            <PasswordBox x:Name="Password" materialDesign:HintAssist.Hint="Password" 
+                         Grid.Row="2" Grid.Column="1" Grid.ColumnSpan="2"
+                         VerticalAlignment="Top" Padding="2 0 0 0"
+                         />
+            
+            <!-- Row 3 -->
+            <Button x:Name="SignIn" Style="{DynamicResource MaterialDesignRaisedAccentButton}"
+                    Grid.Row="3" Grid.Column="1" Height="51" VerticalAlignment="Top"
+                    Content="Sign In" FontSize="20"/>
+            
+            <!-- Row 4 -->
+            <Button x:Name="CreateNewUser" Style="{DynamicResource MaterialDesignRaisedDarkButton}"
+                    Grid.Row="4" Grid.Column="1" Height="51" VerticalAlignment="Top" Width="160"
+                    Content="New User" FontSize="18" Background="Transparent"/>
+            
+            <!-- Row 5 -->
+            <Button x:Name="CloseWindow" Style="{DynamicResource MaterialDesignFlatAccentButton}"
+                    Grid.Row="5" Grid.Column="1" Width="40" Height="auto" Padding="0"
+                    Content="Cancel" FontSize="12"/>
+
         </Grid>
     </materialDesign:Card>
 </Window>
