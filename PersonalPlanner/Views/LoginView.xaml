@@ -3,10 +3,75 @@
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
         xmlns:local="clr-namespace:PersonalPlanner.Views"
         mc:Ignorable="d"
-        Title="LoginView" Height="450" Width="800">
-    <Grid>
-        
-    </Grid>
+        Title="LoginView" Height="698" Width="467"
+        WindowStyle="None" Background="Transparent" AllowsTransparency="True"
+        FontSize="20" Foreground="{DynamicResource MaterialDesignDarkForeground}">
+
+    <materialDesign:Card Padding="50" Background="{DynamicResource MaterialDesignDarkBackground}">
+        <Grid>
+            <Grid.RowDefinitions>
+                <RowDefinition Height="282" />
+                <RowDefinition Height="76" />
+                <RowDefinition Height="76" />
+                <RowDefinition Height="71" />
+                <RowDefinition Height="71" />
+                <RowDefinition Height="*" />
+            </Grid.RowDefinitions>
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="68" />
+                <ColumnDefinition Width="232" />
+                <ColumnDefinition Width="68" />
+            </Grid.ColumnDefinitions>
+            
+            <!-- Row 0 -->
+            <Ellipse Grid.Row="0" Grid.Column="1"
+                     Height="232" Width="232" VerticalAlignment="Top"
+                     Stroke="Red">
+                <!--<Image Source="" VerticalAlignment="Center" HorizontalAlignment="Center" 
+                       Margin="50"/>-->
+            </Ellipse>
+
+            <!-- Row 1 -->
+            <Ellipse Grid.Row="1" Grid.Column="0"
+                     Height="43" Width="43" VerticalAlignment="Top" HorizontalAlignment="Left"
+                     Stroke="Red">
+                <!--<Image Source="" VerticalAlignment="Center" HorizontalAlignment="Center" 
+                       Margin="50"/>-->
+            </Ellipse>
+            <TextBox x:Name="Username" Style="{DynamicResource MaterialDesignTextBox}"
+                     Grid.Row="1" Grid.Column="1" Grid.ColumnSpan="2" VerticalAlignment="Top"
+                     Margin="0 5 0 0" materialDesign:HintAssist.Hint="Username"/>
+
+            <!-- Row 2 -->
+            <Ellipse Grid.Row="2" Grid.Column="0"
+                     Height="43" Width="43" VerticalAlignment="Top" HorizontalAlignment="Left"
+                     Stroke="Red">
+                <!--<Image Source="" VerticalAlignment="Center" HorizontalAlignment="Center" 
+                       Margin="50"/>-->
+            </Ellipse>
+            <PasswordBox x:Name="Password" Style="{DynamicResource MaterialDesignPasswordBox}"
+                     Grid.Row="2" Grid.Column="1" Grid.ColumnSpan="2" VerticalAlignment="Top"
+                     Margin="0 5 0 0" materialDesign:HintAssist.Hint="Password"/>
+            
+            <!-- Row 3 -->
+            <Button x:Name="SignIn" Style="{DynamicResource MaterialDesignRaisedAccentButton}" 
+                    Grid.Row="3" Grid.Column="1" VerticalAlignment="Top" Height="51" Content="Sign In"
+                    FontSize="20"/>
+            
+            <!-- Row 4 -->
+            <Button x:Name="AddUser" Style="{DynamicResource MaterialDesignFlatButton}"
+                    Grid.Row="4" Grid.Column="1" VerticalAlignment="Top" Height="51" Content="Add User"
+                    FontSize="20" BorderBrush="Red" BorderThickness="1"/>
+            
+            <!-- Row 5 -->
+            <Button x:Name="Cancel" Style="{DynamicResource MaterialDesignFlatButton}"
+                    Grid.Row="5" Grid.Column="1" VerticalAlignment="Top" Content="Cancel"
+                    Foreground="Red" Padding="0" FontWeight="Light"/>
+
+
+        </Grid>
+    </materialDesign:Card>
 </Window>
