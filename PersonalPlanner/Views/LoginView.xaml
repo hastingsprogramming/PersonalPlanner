@@ -6,9 +6,11 @@
         xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
         xmlns:local="clr-namespace:PersonalPlanner.Views"
         mc:Ignorable="d"
-        Title="LoginView" Height="698" Width="467"
+        Title="LoginView" Height="710" Width="467"
         WindowStyle="None" Background="Transparent" AllowsTransparency="True"
-        FontSize="20" Foreground="{DynamicResource MaterialDesignDarkForeground}">
+        FontSize="20" Foreground="{DynamicResource MaterialDesignDarkForeground}"
+        MouseDown="InitiateWindowMovement" WindowStartupLocation="CenterScreen"
+        WindowState="Normal" ResizeMode="NoResize">
 
     <materialDesign:Card Padding="50" Background="{DynamicResource MaterialDesignDarkBackground}">
         <Grid>
@@ -30,16 +32,18 @@
             <Ellipse Grid.Row="0" Grid.Column="1"
                      Height="232" Width="232" VerticalAlignment="Top"
                      Stroke="Red">
-                <!--<Image Source="" VerticalAlignment="Center" HorizontalAlignment="Center" 
-                       Margin="50"/>-->
+                <Ellipse.Fill>
+                    <ImageBrush ImageSource="../Icons/LoginWindowIcon.png"/>
+                </Ellipse.Fill>
             </Ellipse>
 
             <!-- Row 1 -->
             <Ellipse Grid.Row="1" Grid.Column="0"
                      Height="43" Width="43" VerticalAlignment="Top" HorizontalAlignment="Left"
                      Stroke="Red">
-                <!--<Image Source="" VerticalAlignment="Center" HorizontalAlignment="Center" 
-                       Margin="50"/>-->
+                <Ellipse.Fill>
+                    <ImageBrush ImageSource="../Icons/UserIcon.png" />
+                </Ellipse.Fill>
             </Ellipse>
             <TextBox x:Name="Username" Style="{DynamicResource MaterialDesignTextBox}"
                      Grid.Row="1" Grid.Column="1" Grid.ColumnSpan="2" VerticalAlignment="Top"
@@ -49,8 +53,9 @@
             <Ellipse Grid.Row="2" Grid.Column="0"
                      Height="43" Width="43" VerticalAlignment="Top" HorizontalAlignment="Left"
                      Stroke="Red">
-                <!--<Image Source="" VerticalAlignment="Center" HorizontalAlignment="Center" 
-                       Margin="50"/>-->
+                <Ellipse.Fill>
+                    <ImageBrush ImageSource="../Icons/PasswordIcon.png" />
+                </Ellipse.Fill>
             </Ellipse>
             <PasswordBox x:Name="Password" Style="{DynamicResource MaterialDesignPasswordBox}"
                      Grid.Row="2" Grid.Column="1" Grid.ColumnSpan="2" VerticalAlignment="Top"

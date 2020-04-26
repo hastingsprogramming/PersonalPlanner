@@ -23,5 +23,10 @@ namespace PersonalPlanner.Views
         {
             InitializeComponent();
         }
+
+        private void InitiateWindowMovement(object sender, MouseButtonEventArgs e)
+        {
+            if (e.ChangedButton == MouseButton.Left) this.DragMove();
+        }
     }
 }
