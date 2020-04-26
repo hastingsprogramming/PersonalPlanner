@@ -15,11 +15,11 @@ using System.Windows.Shapes;
 namespace PersonalPlanner.Views
 {
     /// <summary>
-    /// Interaction logic for RootView.xaml
+    /// Interaction logic for AddUserView.xaml
     /// </summary>
-    public partial class RootView : Window
+    public partial class AddUserView : Window
     {
-        public RootView()
+        public AddUserView()
         {
             InitializeComponent();
         }

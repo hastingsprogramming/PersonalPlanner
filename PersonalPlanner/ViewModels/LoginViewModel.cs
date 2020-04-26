@@ -64,7 +64,7 @@ namespace PersonalPlanner.ViewModels
 
         public void AddUser()
         {
-            //TODO: Implement Me!!
+            bool? result = WindowManager.ShowDialog(new AddUserViewModel());
         }
         public void Cancel() => TryClose();
     }
