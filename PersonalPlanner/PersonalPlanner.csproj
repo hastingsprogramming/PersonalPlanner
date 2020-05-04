@@ -81,13 +81,33 @@
     </Compile>
     <Compile Include="Helpers\PasswordBoxHelper.cs" />
     <Compile Include="ViewModels\AddUserViewModel.cs" />
+    <Compile Include="ViewModels\DashboardViewModel.cs" />
+    <Compile Include="ViewModels\EventsViewModel.cs" />
+    <Compile Include="ViewModels\FinanceViewModel.cs" />
     <Compile Include="ViewModels\LoginViewModel.cs" />
+    <Compile Include="ViewModels\NotesViewModel.cs" />
+    <Compile Include="ViewModels\ProjectsViewModel.cs" />
     <Compile Include="ViewModels\RootViewModel.cs" />
     <Compile Include="Views\AddUserView.xaml.cs">
       <DependentUpon>AddUserView.xaml</DependentUpon>
     </Compile>
+    <Compile Include="Views\DashboardView.xaml.cs">
+      <DependentUpon>DashboardView.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\EventsView.xaml.cs">
+      <DependentUpon>EventsView.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\FinanceView.xaml.cs">
+      <DependentUpon>FinanceView.xaml</DependentUpon>
+    </Compile>
     <Compile Include="Views\LoginView.xaml.cs">
       <DependentUpon>LoginView.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\NotesView.xaml.cs">
+      <DependentUpon>NotesView.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\ProjectsView.xaml.cs">
+      <DependentUpon>ProjectsView.xaml</DependentUpon>
     </Compile>
     <Compile Include="Views\RootView.xaml.cs">
       <DependentUpon>RootView.xaml</DependentUpon>
@@ -129,7 +149,27 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
+    <Page Include="Views\DashboardView.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Views\EventsView.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Views\FinanceView.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="Views\LoginView.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Views\NotesView.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Views\ProjectsView.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>

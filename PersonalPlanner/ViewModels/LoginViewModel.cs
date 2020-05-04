@@ -58,7 +58,7 @@ namespace PersonalPlanner.ViewModels
         }
         public void SignIn()
         {
-            WindowManager.ShowWindow(new RootViewModel());
+            WindowManager.ShowWindow(new RootViewModel(WindowManager), null, null);
             this.TryClose();
         }
 

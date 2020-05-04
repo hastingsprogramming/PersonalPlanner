@@ -7,7 +7,13 @@ using System.Threading.Tasks;
 
 namespace PersonalPlanner.ViewModels
 {
-    class RootViewModel : Screen
+    class RootViewModel : Conductor<object>
     {
+        IWindowManager WM;
+        public RootViewModel(IWindowManager wm)
+        {
+            WM = wm;
+            ActivateItem(new DashboardViewModel());
+        }
     }
 }
