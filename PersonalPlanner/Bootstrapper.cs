@@ -39,7 +39,7 @@ namespace PersonalPlanner
         }
         protected override void OnStartup(object sender, StartupEventArgs e)
         {
-            DisplayRootViewFor<LoginViewModel>();
+            DisplayRootViewFor<RootViewModel>();
         }
         protected override object GetInstance(Type service, string key)
         {

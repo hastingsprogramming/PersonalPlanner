@@ -58,14 +58,14 @@ namespace PersonalPlanner.ViewModels
         }
         public void SignIn()
         {
-            WindowManager.ShowWindow(new RootViewModel(WindowManager), null, null);
-            this.TryClose();
+            // Set a user attribute to the relevant user (if they can sign in)
+            this.TryClose(true);
         }
 
         public void AddUser()
         {
             bool? result = WindowManager.ShowDialog(new AddUserViewModel());
         }
-        public void Cancel() => TryClose();
+        public void Cancel() => this.TryClose(false);
     }
 }
