@@ -7,7 +7,7 @@
         xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
         xmlns:cal="http://www.caliburnproject.org"
         mc:Ignorable="d"
-        Title="RootView" Height="450" Width="800"
+        Title="RootView" Height="884.4" Width="800"
         WindowStyle="None" WindowState="Maximized" Background="{DynamicResource MaterialDesignDarkBackground}"
         FontSize="20" Foreground="{DynamicResource MaterialDesignDarkForeground}" cal:Message.Attach="[Loaded]=[Loaded()]">
     <Grid>
@@ -18,12 +18,54 @@
             <ColumnDefinition Width="250" />
             <ColumnDefinition Width="1*" />
         </Grid.ColumnDefinitions>
-        
+
         <!-- Column 0 -->
         <StackPanel x:Name="Navigation"
                     Grid.Row="0" Grid.Column="0" VerticalAlignment="Stretch" HorizontalAlignment="Stretch"
-                    CanHorizontallyScroll="False" CanVerticallyScroll="False"/>
-        
+                    CanHorizontallyScroll="False" CanVerticallyScroll="False">
+            <Border BorderBrush="Red" BorderThickness="1" Height="250" >
+                <Grid VerticalAlignment="Center" HorizontalAlignment="Center">
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="150" />
+                        <RowDefinition Height="10" />
+                        <RowDefinition Height="auto" />
+                    </Grid.RowDefinitions>
+                    <Image Source="../Icons/UserMainIcon.png" Height="150" Width="150" Grid.Row="0" />
+                    <TextBlock x:Name="Name" Text="User's Name" Grid.Row="2" HorizontalAlignment="Center" FontSize="24"/>
+                </Grid>
+            </Border>
+            <Button x:Name="DashboardShow"
+                    Content="Dashboard" Style="{DynamicResource MaterialDesignRaisedButton}" 
+                    Height="100" Background="{DynamicResource MaterialDesignDarkBackground}"
+                    Foreground="{DynamicResource MaterialDesignDarkForeground}" FontSize="20" 
+                    BorderBrush="Red" BorderThickness="1"/>
+            <Button x:Name="EventsShow"
+                    Content="Events" Style="{DynamicResource MaterialDesignRaisedButton}" 
+                    Height="100" Background="{DynamicResource MaterialDesignDarkBackground}"
+                    Foreground="{DynamicResource MaterialDesignDarkForeground}" FontSize="20" 
+                    BorderBrush="Red" BorderThickness="1"/>
+            <Button x:Name="FinanceShow"
+                    Content="Finance" Style="{DynamicResource MaterialDesignRaisedButton}" 
+                    Height="100" Background="{DynamicResource MaterialDesignDarkBackground}"
+                    Foreground="{DynamicResource MaterialDesignDarkForeground}" FontSize="20" 
+                    BorderBrush="Red" BorderThickness="1"/>
+            <Button x:Name="NotesShow"
+                    Content="Notes" Style="{DynamicResource MaterialDesignRaisedButton}" 
+                    Height="100" Background="{DynamicResource MaterialDesignDarkBackground}"
+                    Foreground="{DynamicResource MaterialDesignDarkForeground}" FontSize="20" 
+                    BorderBrush="Red" BorderThickness="1"/>
+            <Button x:Name="ProjectsShow"
+                    Content="Projects" Style="{DynamicResource MaterialDesignRaisedButton}" 
+                    Height="100" Background="{DynamicResource MaterialDesignDarkBackground}"
+                    Foreground="{DynamicResource MaterialDesignDarkForeground}" FontSize="20" 
+                    BorderBrush="Red" BorderThickness="1"/>
+            <Button x:Name="SignOut"
+                    Content="Sign Out" Style="{DynamicResource MaterialDesignRaisedButton}" 
+                    Height="100" Background="{DynamicResource MaterialDesignDarkBackground}"
+                    Foreground="{DynamicResource MaterialDesignDarkForeground}" FontSize="20" 
+                    BorderBrush="Red" BorderThickness="1"/>
+        </StackPanel>
+
         <!-- Column 1 -->
         <ContentControl x:Name="ActiveItem"
                         Grid.Row="0" Grid.Column="1" />
