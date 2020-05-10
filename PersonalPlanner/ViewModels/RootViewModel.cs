@@ -14,7 +14,6 @@ namespace PersonalPlanner.ViewModels
         public RootViewModel(IWindowManager wm)
         {
             WindowManager = wm;
-            ActivateItem(IoC.Get<DashboardViewModel>());
         }
 
         public void Loaded()
@@ -30,20 +29,19 @@ namespace PersonalPlanner.ViewModels
 
         public void SignOut()
         {
-            Reset();
-            var vm = IoC.Get<LoginViewModel>();
-            var r = WindowManager.ShowDialog(vm, null, null);
-
-            if (r.HasValue && r.Value == false)
+            if (WindowManager.ShowDialog(new TwoButtonDialogViewModel("Quit", "Are you sure you want to sign out:", "Yes", "No")) == true)
             {
-                TryClose();
-            }
+                Reset();
+                var vm = IoC.Get<LoginViewModel>();
+                var r = WindowManager.ShowDialog(vm, null, null);
 
+                if (r.HasValue && r.Value == false) TryClose();
+            }
         }
 
         void Reset()
         {
-            ActivateItem(IoC.Get<DashboardViewModel>());
+            DashboardShow();
         }
     }
 }

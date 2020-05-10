@@ -61,11 +61,14 @@ namespace PersonalPlanner.ViewModels
             // Set a user attribute to the relevant user (if they can sign in)
             this.TryClose(true);
         }
-
         public void AddUser()
         {
             bool? result = WindowManager.ShowDialog(new AddUserViewModel());
         }
-        public void Cancel() => this.TryClose(false);
+        public void Cancel()
+        {
+            if (WindowManager.ShowDialog(new TwoButtonDialogViewModel("Quit", "Are you sure you want to quit:", "Yes", "No")) == true) this.TryClose(false);
+            else return;
+        }
     }
 }
