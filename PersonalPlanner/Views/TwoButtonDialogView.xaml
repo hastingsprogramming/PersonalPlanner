@@ -31,7 +31,7 @@
                            VerticalAlignment="Center" Padding="15 0 0 0"
                            Foreground="Gray" FontSize="16"/>
                 <TextBlock x:Name="Message" Text="Message"
-                           Grid.Row="1" Grid.Column="0" Grid.ColumnSpan="3"
+                           Grid.Row="1" Grid.Column="0" Grid.ColumnSpan="3" TextWrapping="Wrap"
                            VerticalAlignment="Center" HorizontalAlignment="Center" TextAlignment="Center"/>
 
                 <Button x:Name="Cancel" Content="{Binding CancelButtonText}"

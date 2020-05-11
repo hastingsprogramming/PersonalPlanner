@@ -38,13 +38,9 @@
                 </Ellipse>
 
                 <!-- Row 1 -->
-                <Ellipse Grid.Row="1" Grid.Column="0"
-                     Height="43" Width="43" VerticalAlignment="Top" HorizontalAlignment="Left"
-                     Stroke="Red">
-                    <Ellipse.Fill>
-                        <ImageBrush ImageSource="../Icons/UserIcon.png" />
-                    </Ellipse.Fill>
-                </Ellipse>
+                <Image Grid.Row="1" Grid.Column="0"
+                       Height="43" Width="43" VerticalAlignment="Top" HorizontalAlignment="Left"
+                       Source="../Icons/UserIcon.png" />
                 <TextBox x:Name="Username" Style="{DynamicResource MaterialDesignTextBox}"
                      Grid.Row="1" Grid.Column="1" Grid.ColumnSpan="2" VerticalAlignment="Top"
                      Margin="0 5 0 0" materialDesign:HintAssist.Hint="Username"/>

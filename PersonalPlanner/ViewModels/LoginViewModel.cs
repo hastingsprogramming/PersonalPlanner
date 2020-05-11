@@ -63,7 +63,7 @@ namespace PersonalPlanner.ViewModels
         }
         public void AddUser()
         {
-            bool? result = WindowManager.ShowDialog(new AddUserViewModel());
+            WindowManager.ShowDialog(IoC.Get<AddUserViewModel>());
         }
         public void Cancel()
         {

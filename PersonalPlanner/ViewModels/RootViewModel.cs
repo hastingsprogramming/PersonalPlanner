@@ -16,10 +16,7 @@ namespace PersonalPlanner.ViewModels
             WindowManager = wm;
         }
 
-        public void Loaded()
-        {
-            SignOut();
-        }
+        public void Loaded() => GetNewSignIn();
 
         public void DashboardShow() => ActivateItem(IoC.Get<DashboardViewModel>());
         public void FinanceShow() => ActivateItem(IoC.Get<FinanceViewModel>());
@@ -31,12 +28,16 @@ namespace PersonalPlanner.ViewModels
         {
             if (WindowManager.ShowDialog(new TwoButtonDialogViewModel("Quit", "Are you sure you want to sign out:", "Yes", "No")) == true)
             {
-                Reset();
-                var vm = IoC.Get<LoginViewModel>();
-                var r = WindowManager.ShowDialog(vm, null, null);
-
-                if (r.HasValue && r.Value == false) TryClose();
+                GetNewSignIn();
             }
+        }
+        public void GetNewSignIn()
+        {
+            Reset();
+            var vm = IoC.Get<LoginViewModel>();
+            var r = WindowManager.ShowDialog(vm, null, null);
+
+            if (r.HasValue && r.Value == false) TryClose();
         }
 
         void Reset()
