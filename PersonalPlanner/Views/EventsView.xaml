@@ -27,7 +27,7 @@
         <materialDesign:Card Name="EventCard"
                              Grid.Row="1" Grid.RowSpan="3" Grid.Column="0" Margin="50 0 0 50"
                              BorderBrush="Red" BorderThickness="1" UniformCornerRadius="5">
-            <StackPanel x:Name="EventStacker" Background="{DynamicResource MaterialDesignDarkBackground}" Margin="25"/>
+            <StackPanel x:Name="EventStacker" Background="Transparent" Margin="25"/>
         </materialDesign:Card>
         <materialDesign:Card Name="EventDetailsCard"
                              Grid.Row="1" Grid.Column="2" Margin="0 0 50 0"

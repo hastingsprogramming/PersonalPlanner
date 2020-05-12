@@ -79,7 +79,21 @@
       <DependentUpon>App.xaml</DependentUpon>
       <SubType>Code</SubType>
     </Compile>
+    <Compile Include="dataDataSet.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>dataDataSet.xsd</DependentUpon>
+    </Compile>
     <Compile Include="Helpers\PasswordBoxHelper.cs" />
+    <Compile Include="Models\IDataModel.cs" />
+    <Compile Include="Models\FinanceActivity.cs" />
+    <Compile Include="Models\PersonalEvent.cs" />
+    <Compile Include="Models\PersonalNote.cs" />
+    <Compile Include="Models\Project.cs" />
+    <Compile Include="Models\ProjectNote.cs" />
+    <Compile Include="Models\ProjectTask.cs" />
+    <Compile Include="Models\TaskNote.cs" />
+    <Compile Include="Models\User.cs" />
     <Compile Include="ViewModels\AddUserViewModel.cs" />
     <Compile Include="ViewModels\DashboardViewModel.cs" />
     <Compile Include="ViewModels\EventsViewModel.cs" />
@@ -136,6 +150,17 @@
       <Generator>ResXFileCodeGenerator</Generator>
       <LastGenOutput>Resources.Designer.cs</LastGenOutput>
     </EmbeddedResource>
+    <None Include="dataDataSet.xsc">
+      <DependentUpon>dataDataSet.xsd</DependentUpon>
+    </None>
+    <None Include="dataDataSet.xsd">
+      <Generator>MSDataSetGenerator</Generator>
+      <LastGenOutput>dataDataSet.Designer.cs</LastGenOutput>
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="dataDataSet.xss">
+      <DependentUpon>dataDataSet.xsd</DependentUpon>
+    </None>
     <None Include="packages.config" />
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>
@@ -145,9 +170,7 @@
   <ItemGroup>
     <None Include="App.config" />
   </ItemGroup>
-  <ItemGroup>
-    <Folder Include="Models\" />
-  </ItemGroup>
+  <ItemGroup />
   <ItemGroup>
     <Page Include="Views\AddUserView.xaml">
       <SubType>Designer</SubType>
@@ -200,6 +223,11 @@
   </ItemGroup>
   <ItemGroup>
     <Resource Include="Icons\NewUserIcon.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="data.mdb">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <Import Project="..\packages\MaterialDesignThemes.3.1.0\build\MaterialDesignThemes.targets" Condition="Exists('..\packages\MaterialDesignThemes.3.1.0\build\MaterialDesignThemes.targets')" />
