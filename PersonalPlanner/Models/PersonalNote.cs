@@ -1,42 +1,38 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace PersonalPlanner.Models
 {
     public class PersonalNote : IDataModel
-    {
-        private int _id;
-        private User _user;
-        private string _title;
-        private string _content;
-
-        public int ID
-        {
-            get { return _id; }
-            set { _id = value; }
-        }
-        public User User
-        {
-            get { return _user; }
-            set { _user = value; }
-        }
-        public string Title
-        {
-            get { return _title; }
-            set { _title = value; }
-        }
-        public string Content
-        {
-            get { return _content; }
-            set { _content = value; }
-        }
+    { 
+        public int ID { get; set; }
+        public string Title { get; set; }
+        public string Content { get; set; }
         public DateTime Created { get; set; }
         public DateTime Updated { get; set; }
         public DateTime Removed { get; set; }
 
-        public void UpdateDataSet() { }
+        public PersonalNote(dataDataSet.PersonalNotesRow noteData)
+        {
+            ID = noteData.ID;
+            Title = noteData.Title;
+            Content = noteData.Content;
+            Created = noteData.Created;
+            Updated = noteData.Updated;
+            Removed = noteData.Removed;
+        }
+
+        public static PersonalNote CreateNew(User user, string title, string content)
+        {
+            // Create a new PersonalNotesRow in the dataset, request the most recent, then use that to create the new PersonalNote.
+            // Make sure to add the new PersonalNote to the user.Notes property
+            return null;
+        }
+
+        public void Update(string _title, string _content)
+        {
+            Title = _title;
+            Content = _content;
+            Updated = DateTime.Now;
+        }
     }
 }

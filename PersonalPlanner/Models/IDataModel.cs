@@ -7,7 +7,5 @@ namespace PersonalPlanner.Models
         DateTime Created { get; set; }
         DateTime Updated { get; set; }
         DateTime Removed { get; set; }
-
-        void UpdateDataSet();
     }
 }

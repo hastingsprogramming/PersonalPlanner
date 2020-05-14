@@ -1,48 +1,46 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace PersonalPlanner.Models
 {
     public class ProjectTask : IDataModel
     {
-        private bool _completed;
-		private int _id;
-		private Project _project;
-		private string _title;
-		private string _content;
-
-		public int ID
-		{
-			get { return _id; }
-			set { _id = value; }
-		}
-		public Project Project
-		{
-			get { return _project; }
-			set { _project = value; }
-		}
-		public string Title
-		{
-			get { return _title; }
-			set { _title = value; }
-		}
-		public string Content
-		{
-			get { return _content; }
-			set { _content = value; }
-		}
-		public bool Completed
-        {
-            get { return _completed; }
-            set { _completed = value; }
-        }
+        public int ID { get; set; }
+        public string Title { get; set; }
+        public string Content { get; set; }
+        public bool Completed { get; set; }
+        public List<TaskNote> Notes {get; set;}
         public DateTime Created { get; set; }
         public DateTime Updated { get; set; }
         public DateTime Removed { get; set; }
 
-        public void UpdateDataSet() { }
+        public ProjectTask(dataDataSet.ProjectTasksRow taskData)
+        {
+            ID = taskData.ID;
+            Title = taskData.Title;
+            Content = taskData.Title;
+            Completed = taskData.Completed;
+            Notes = GetNotes();
+            Created = taskData.Created;
+            Updated = taskData.Updated;
+            Removed = taskData.Removed; 
+        }
+
+        public static ProjectTask CreateNew(Project project, string title, string content, bool completed)
+        {
+            // Create a new ProjectsTaskRow in the dataset, request the most recent, then use that to create the new ProjectTask.
+            // Make sure to add the new TaskNote to the project.Tasks property
+            return null;
+        }
+
+        public List<TaskNote> GetNotes() { return new List<TaskNote>(); }
+
+        public void Update(string _title, string _content, bool _completed) 
+        {
+            Title = _title;
+            Content = _content;
+            Completed = _completed;
+            Updated = DateTime.Now;
+        }
     }
 }

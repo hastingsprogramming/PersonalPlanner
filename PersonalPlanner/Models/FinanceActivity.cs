@@ -1,60 +1,47 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace PersonalPlanner.Models
 {
-    public class FinanceActivity : IDataModel
+	public class FinanceActivity : IDataModel
     {
-		private int _id;
-		private User _user;
-		private string _title;
-		private string _description;
-		private int _moneyIn;
-		private int _moneyOut;
-		private DateTime _activityDate;
-
-		public int ID
-		{
-			get { return _id; }
-			set { _id = value; }
-		}
-		public User User
-		{
-			get { return _user; }
-			set { _user = value; }
-		}
-		public string Title
-		{
-			get { return _title; }
-			set { _title = value; }
-		}
-		public string Description
-		{
-			get { return _description; }
-			set { _description = value; }
-		}
-		public int MoneyIn
-		{
-			get { return _moneyIn; }
-			set { _moneyIn = value; }
-		}
-		public int MoneyOut
-		{
-			get { return _moneyOut; }
-			set { _moneyOut = value; }
-		}
-		public DateTime ActivityDate
-		{
-			get { return _activityDate; }
-			set { _activityDate = value; }
-		}
+		public int ID { get; set; }
+		public string Title { get; set; }
+		public string Description { get; set; }
+		public int MoneyIn { get; set; }
+		public int MoneyOut { get; set; }
+		public DateTime ActivityDate { get; set; }
 		public DateTime Created { get; set; }
 		public DateTime Updated { get; set; }
 		public DateTime Removed { get; set; }
 
-		public void UpdateDataSet() { }
+		public FinanceActivity(dataDataSet.FinanceActivitiesRow activityData)
+		{
+			ID = activityData.ID;
+			Title = activityData.Title;
+			Description = activityData.Description;
+			MoneyIn = activityData.MoneyIn;
+			MoneyOut = activityData.MoneyOut;
+			ActivityDate = activityData.ActivityDate;
+			Created = activityData.Created;
+			Updated = activityData.Updated;
+			Removed = activityData.Removed;
+		}
+
+		public static FinanceActivity CreateNew(User user, string title, string description, int moneyIn, int moneyOut, DateTime activityDate)
+		{
+			// Create a new FinanceActivitiesRow in the dataset, request the most recent, then use that to create the new FinanceActivity.
+			// Make sure to add the new FinanceActivity to the user.CashFlow property
+			return null;
+		}
+
+		public void Update(string _title, string _description, int _moneyIn, int _moneyOut, DateTime _activityDate)
+		{
+			Title = _title;
+			Description = _description;
+			MoneyIn = _moneyIn;
+			MoneyOut = _moneyOut;
+			ActivityDate = _activityDate;
+			Updated = DateTime.Now;
+		}
 	}
 }
