@@ -25,7 +25,9 @@ namespace PersonalPlanner.Models
         {
             // Create a new PersonalNotesRow in the dataset, request the most recent, then use that to create the new PersonalNote.
             // Make sure to add the new PersonalNote to the user.Notes property
-            return null;
+            var adapter = new dataDataSetTableAdapters.PersonalNotesTableAdapter();
+            adapter.Insert(user.Username, title, content, DateTime.Now, DateTime.Now, default);
+            return new PersonalNote((dataDataSet.PersonalNotesRow)adapter.GetData().Select("Created="+DateTime.Now.ToString())[0]);
         }
 
         public void Update(string _title, string _content)
@@ -33,6 +35,9 @@ namespace PersonalPlanner.Models
             Title = _title;
             Content = _content;
             Updated = DateTime.Now;
+
+            var adapter = new dataDataSetTableAdapters.PersonalNotesTableAdapter();
+            adapter.UpdateData(Title, Content, Updated, ID);
         }
     }
 }

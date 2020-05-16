@@ -25,7 +25,9 @@ namespace PersonalPlanner.Models
 		{
 			// Create a new ProjectNotesRow in the dataset, request the most recent, then use that to create the new ProjectNote.
 			// Make sure to add the new ProjectNote to the project.Notes property
-			return null;
+			var adapter = new dataDataSetTableAdapters.ProjectNotesTableAdapter();
+			adapter.Insert(project.ID, title, content, DateTime.Now, DateTime.Now, default);
+			return new ProjectNote((dataDataSet.ProjectNotesRow)adapter.GetData().Select("Created=" + DateTime.Now.ToString())[0]);
 		}
 
 		public void Update(string _title, string _content)
@@ -33,6 +35,9 @@ namespace PersonalPlanner.Models
 			Title = _title;
 			Content = _content;
 			Updated = DateTime.Now;
+
+			var adapter = new dataDataSetTableAdapters.ProjectNotesTableAdapter();
+			adapter.UpdateData(Title, Content, Updated, ID);
 		}
 	}
 }

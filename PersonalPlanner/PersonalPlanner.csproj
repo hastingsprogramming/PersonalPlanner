@@ -157,8 +157,8 @@
     </None>
     <None Include="dataDataSet.xsd">
       <Generator>MSDataSetGenerator</Generator>
-      <LastGenOutput>dataDataSet.Designer.cs</LastGenOutput>
       <SubType>Designer</SubType>
+      <LastGenOutput>dataDataSet.Designer.cs</LastGenOutput>
     </None>
     <None Include="dataDataSet.xss">
       <DependentUpon>dataDataSet.xsd</DependentUpon>

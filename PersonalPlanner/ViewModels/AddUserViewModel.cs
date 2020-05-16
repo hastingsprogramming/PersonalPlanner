@@ -1,4 +1,5 @@
 ﻿using Caliburn.Micro;
+using PersonalPlanner.Models;
 using System.Linq;
 
 namespace PersonalPlanner.ViewModels
@@ -7,7 +8,7 @@ namespace PersonalPlanner.ViewModels
     {
         private string _username;
         private string _firstName;
-        private string _surname;
+        private string _lastName;
         private string _password;
         private string _confirmPassword;
 
@@ -31,13 +32,13 @@ namespace PersonalPlanner.ViewModels
                 NotifyOfPropertyChange(() => CanAddUser);
             }
         }
-        public string Surname
+        public string LastName
         {
-            get { return _surname; }
+            get { return _lastName; }
             set
             {
-                _surname = value;
-                NotifyOfPropertyChange(() => Surname);
+                _lastName = value;
+                NotifyOfPropertyChange(() => LastName);
                 NotifyOfPropertyChange(() => CanAddUser);
             }
         }
@@ -80,7 +81,7 @@ namespace PersonalPlanner.ViewModels
             {
                 if (!string.IsNullOrEmpty(Username)
                     && !string.IsNullOrEmpty(FirstName)
-                    && !string.IsNullOrEmpty(Surname)
+                    && !string.IsNullOrEmpty(LastName)
                     && !string.IsNullOrEmpty(Password)
                     && !string.IsNullOrEmpty(ConfirmPassword))
                 {
@@ -104,7 +105,8 @@ namespace PersonalPlanner.ViewModels
         }
         public void AddUser()
         {
-            // Do Add User Stuff
+
+            User.CreateNew(Username, Password, FirstName, LastName);
             TryClose(true);
         }
 

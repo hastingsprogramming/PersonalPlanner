@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Security.Cryptography;
 
 namespace PersonalPlanner.Models
 {
@@ -29,7 +30,9 @@ namespace PersonalPlanner.Models
 		{
 			// Create a new ProjectsRow in the dataset, request the most recent, then use that to create the new Project.
 			// Make sure to add the new Project to the user.Projects property
-			return null;
+			var adapter = new dataDataSetTableAdapters.ProjectsTableAdapter();
+			adapter.Insert(user.Username, title, description, DateTime.Now, DateTime.Now, default);
+			return new Project((dataDataSet.ProjectsRow)adapter.GetData().Select("Created=" + DateTime.Now.ToString())[0]);
 		}
 		private List<ProjectNote> LoadNotes() 
 		{ 
@@ -44,6 +47,9 @@ namespace PersonalPlanner.Models
 			Title = _title;
 			Description = _description;
 			Updated = DateTime.Now;
+
+			var adapter = new dataDataSetTableAdapters.ProjectsTableAdapter();
+			adapter.UpdateData(Title, Description, Updated, ID);
 		}
 	}
 }

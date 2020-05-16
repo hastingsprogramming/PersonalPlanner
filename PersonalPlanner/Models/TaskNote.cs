@@ -33,6 +33,9 @@ namespace PersonalPlanner.Models
             Title = _title;
             Content = _content;
             Updated = DateTime.Now;
+
+            var adapter = new dataDataSetTableAdapters.TaskNotesTableAdapter();
+            adapter.UpdateData(Title, Content, Updated, ID);
         }
     }
 }

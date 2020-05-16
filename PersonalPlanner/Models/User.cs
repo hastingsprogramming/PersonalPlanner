@@ -33,10 +33,12 @@ namespace PersonalPlanner.Models
             Removed = userData.Removed;
         }
 
-        public static User CreateNew(string username, string password, string firstName, string secondName)
+        public static User CreateNew(string username, string password, string firstName, string lastName)
         {
             // Create a new UsersRow in the dataset, request the most recent, then use that to create the new User.
-            return null;
+            var adapter = new dataDataSetTableAdapters.UsersTableAdapter();
+            adapter.Insert(username, password, firstName, lastName, DateTime.Now, DateTime.Now, default);
+            return new User((dataDataSet.UsersRow)adapter.GetData().Select($"Username=username")[0]);
         }
 
         public List<FinanceActivity> GetCashFlow() { return new List<FinanceActivity>(); }
@@ -50,6 +52,9 @@ namespace PersonalPlanner.Models
             FirstName = _firstName;
             LastName = _lastName;
             Updated = DateTime.Now;
+
+            var adapter = new dataDataSetTableAdapters.UsersTableAdapter();
+            adapter.UpdateData(Password, FirstName, LastName, Updated, Username);
         }
     }
 }
