@@ -1,6 +1,9 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Data;
+using System.Windows.Controls.Primitives;
 using System.Windows.Navigation;
+using static PersonalPlanner.dataDataSet;
 
 namespace PersonalPlanner.Models
 {
@@ -11,7 +14,7 @@ namespace PersonalPlanner.Models
         public string FirstName { get; set; }
         public string LastName { get; set; }
         public List<FinanceActivity> CashFlow { get; set; }
-        public List<PersonalEvent> Events { get;  set; }
+        public List<PersonalEvent> Events { get; set; }
         public List<PersonalNote> Notes { get; set; }
         public List<Project> Projects { get; set; }
         public DateTime Created { get; set; }
@@ -20,7 +23,7 @@ namespace PersonalPlanner.Models
 
         public User(dataDataSet.UsersRow userData)
         {
-            Username = userData.Password;
+            Username = userData.Username;
             Password = userData.Password;
             FirstName = userData.FirstName;
             LastName = userData.LastName;
@@ -37,7 +40,8 @@ namespace PersonalPlanner.Models
         {
             // Create a new UsersRow in the dataset, request the most recent, then use that to create the new User.
             var adapter = new dataDataSetTableAdapters.UsersTableAdapter();
-            adapter.Insert(username, password, firstName, lastName, DateTime.Now, DateTime.Now, default);
+            var createdTime = DateTime.Now;
+            adapter.Insert(username, App.GetSha256Hash(password), firstName, lastName, createdTime, createdTime, default);
             return new User((dataDataSet.UsersRow)adapter.GetData().Select($"Username=username")[0]);
         }
 
@@ -45,6 +49,16 @@ namespace PersonalPlanner.Models
         public List<PersonalEvent> GetEvents() { return new List<PersonalEvent>(); }
         public List<PersonalNote> GetNotes() { return new List<PersonalNote>(); }
         public List<Project> GetProjects() { return new List<Project>(); }
+
+        public static User GetUser(string username, string password)
+        {
+            var adapter = new dataDataSetTableAdapters.UsersTableAdapter();
+            var result = adapter.GetData().FindByUsername(username);
+
+            if (result == null) return null;
+            if (result.Password == password) return new User(result);
+            else return null;
+        }
 
         public void Update(string _password, string _firstName, string _lastName)
         {

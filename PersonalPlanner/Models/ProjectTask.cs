@@ -28,11 +28,10 @@ namespace PersonalPlanner.Models
 
         public static ProjectTask CreateNew(Project project, string title, string content, bool completed)
         {
-            // Create a new ProjectsTaskRow in the dataset, request the most recent, then use that to create the new ProjectTask.
-            // Make sure to add the new TaskNote to the project.Tasks property
             var adapter = new dataDataSetTableAdapters.ProjectTasksTableAdapter();
-            adapter.Insert(project.ID, title, content, completed, DateTime.Now, DateTime.Now, default);
-            return new ProjectTask((dataDataSet.ProjectTasksRow)adapter.GetData().Select("Created=" + DateTime.Now.ToString())[0]);
+            var createdTime = DateTime.Now;
+            adapter.Insert(project.ID, title, content, completed, createdTime, createdTime, default);
+            return new ProjectTask((dataDataSet.ProjectTasksRow)adapter.GetData().Select("Created=" + createdTime.ToString())[0]);
         }
 
         public List<TaskNote> GetNotes() { return new List<TaskNote>(); }

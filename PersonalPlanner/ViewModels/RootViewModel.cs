@@ -28,6 +28,7 @@ namespace PersonalPlanner.ViewModels
         {
             if (WindowManager.ShowDialog(new TwoButtonDialogViewModel("Quit", "Are you sure you want to sign out:", "Yes", "No")) == true)
             {
+                ((App)App.Current).currentUser = null;
                 GetNewSignIn();
             }
         }
@@ -36,8 +37,14 @@ namespace PersonalPlanner.ViewModels
             Reset();
             var vm = IoC.Get<LoginViewModel>();
             var r = WindowManager.ShowDialog(vm, null, null);
-
             if (r.HasValue && r.Value == false) TryClose();
+
+            UpdateViews();
+        }
+        
+        public void UpdateViews()
+        {
+            // Each of the cards must update with the relevant data, as well as updating the name on the nav
         }
 
         void Reset()

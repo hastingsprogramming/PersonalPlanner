@@ -25,11 +25,10 @@ namespace PersonalPlanner.Models
 
 		public static PersonalEvent CreateNew(User user, string title, string description, DateTime when)
 		{
-			// Create a new PersonalEventsRow in the dataset, request the most recent, then use that to create the new PersonalEvent.
-			// Make sure to add the new PersonalEvent to the user.Events property
 			var adapter = new dataDataSetTableAdapters.EventsTableAdapter();
-			adapter.Insert(user.Username, title, description, when, DateTime.Now, DateTime.Now, default);
-			return new PersonalEvent((dataDataSet.EventsRow)adapter.GetData().Select("Created="+DateTime.Now.ToString())[0]);
+			var createdTime = DateTime.Now;
+			adapter.Insert(user.Username, title, description, when, createdTime, createdTime, default);
+			return new PersonalEvent((dataDataSet.EventsRow)adapter.GetData().Select("Created=" + createdTime.ToString())[0]);
 		}
 
 		public void Update(string _title, string _description, DateTime _when)

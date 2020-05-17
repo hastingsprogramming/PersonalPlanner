@@ -1,4 +1,5 @@
 ﻿using Caliburn.Micro;
+using PersonalPlanner.Models;
 using System.Linq;
 
 namespace PersonalPlanner.ViewModels
@@ -58,8 +59,17 @@ namespace PersonalPlanner.ViewModels
         }
         public void SignIn()
         {
-            // Set a user attribute to the relevant user (if they can sign in)
-            this.TryClose(true);
+            try
+            {
+                User user = User.GetUser(Username, App.GetSha256Hash(Password));
+                if (user == null) throw new System.Exception();
+                ((App)(App.Current)).currentUser = user;
+                this.TryClose(true);
+            }
+            catch
+            {
+                System.Windows.MessageBox.Show("There was an issue with your data");
+            }
         }
         public void AddUser()
         {

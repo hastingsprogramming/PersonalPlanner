@@ -23,9 +23,10 @@ namespace PersonalPlanner.Models
 
         public static TaskNote CreateNew(ProjectTask task, string title, string content)
         {
-            // Create a new TaskNotesRow in the dataset, request the most recent, then use that to create the new TaskNote.
-            // Make sure to add the new TaskNote to the task.Notes property
-            return null;
+            var adapter = new dataDataSetTableAdapters.TaskNotesTableAdapter();
+            var createdTime = DateTime.Now;
+            adapter.Insert(task.ID, title, content, createdTime, createdTime, default);
+            return new TaskNote((dataDataSet.TaskNotesRow)adapter.GetData().Select("Created=" + createdTime.ToString())[0]);
         }
 
         public void Update(string _title, string _content) 

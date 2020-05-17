@@ -28,11 +28,10 @@ namespace PersonalPlanner.Models
 		}
 		public static Project CreateNew(User user, string title, string description)
 		{
-			// Create a new ProjectsRow in the dataset, request the most recent, then use that to create the new Project.
-			// Make sure to add the new Project to the user.Projects property
 			var adapter = new dataDataSetTableAdapters.ProjectsTableAdapter();
-			adapter.Insert(user.Username, title, description, DateTime.Now, DateTime.Now, default);
-			return new Project((dataDataSet.ProjectsRow)adapter.GetData().Select("Created=" + DateTime.Now.ToString())[0]);
+			var createdTime = DateTime.Now;
+			adapter.Insert(user.Username, title, description, createdTime, createdTime, default);
+			return new Project((dataDataSet.ProjectsRow)adapter.GetData().Select("Created=" + createdTime.ToString())[0]);
 		}
 		private List<ProjectNote> LoadNotes() 
 		{ 
