@@ -1,4 +1,6 @@
-﻿using PersonalPlanner.Models;
+﻿using Caliburn.Micro;
+using PersonalPlanner.Models;
+using PersonalPlanner.ViewModels;
 using System.Security.Cryptography;
 using System.Text;
 using System.Windows;
@@ -10,7 +12,12 @@ namespace PersonalPlanner
     /// </summary>
     public partial class App : Application
     {
-        public User currentUser = null;
+        public static User currentUser = null;
+        public static DashboardViewModel DashboardViewModel = new DashboardViewModel();
+        public static FinanceViewModel FinanceViewModel = new FinanceViewModel();
+        public static NotesViewModel NotesViewModel = new NotesViewModel();
+        public static EventsViewModel EventsViewModel = new EventsViewModel();
+        public static ProjectsViewModel ProjectsViewModel = new ProjectsViewModel();
         public static string GetSha256Hash(string rawData)
         {
             // Create a SHA256   

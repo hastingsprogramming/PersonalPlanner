@@ -1,0 +1,44 @@
+﻿<Window x:Class="PersonalPlanner.Views.AddEventView"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
+        xmlns:local="clr-namespace:PersonalPlanner.Views"
+        mc:Ignorable="d"
+        Title="Add Event" Height="710" Width="467"
+        WindowStyle="None" Background="Transparent" AllowsTransparency="True"
+        FontSize="20" Foreground="{DynamicResource MaterialDesignDarkForeground}"
+        MouseDown="InitiateWindowMovement" WindowStartupLocation="CenterScreen"
+        WindowState="Normal" ResizeMode="NoResize">
+    <Border BorderBrush="Red" BorderThickness="2" CornerRadius="2">
+        <materialDesign:Card Padding="50" Background="{DynamicResource MaterialDesignDarkBackground}">
+            <Grid>
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="282" />
+                    <RowDefinition Height="auto" />
+                    <RowDefinition Height="auto" />
+                    <RowDefinition Height="auto" />
+                    <RowDefinition Height="auto" />
+                    <RowDefinition Height="auto" />
+                    <RowDefinition Height="*" />
+                </Grid.RowDefinitions>
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="auto" />
+                    <ColumnDefinition Width="auto" />
+                    <ColumnDefinition Width="*" />
+                </Grid.ColumnDefinitions>
+
+                <!-- Row 0 -->
+                <Ellipse Grid.Row="0" Grid.Column="0" Grid.ColumnSpan="3"
+                     Height="232" Width="232" VerticalAlignment="Top"
+                     Stroke="Red">
+                    <Ellipse.Fill>
+                        <ImageBrush ImageSource="../Icons/FinanceIcon.png"/>
+                    </Ellipse.Fill>
+                </Ellipse>
+
+            </Grid>
+        </materialDesign:Card>
+    </Border>
+</Window>

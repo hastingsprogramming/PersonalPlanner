@@ -2,7 +2,11 @@
 
 namespace PersonalPlanner.ViewModels
 {
-    class FinanceViewModel : Screen
+    public class FinanceViewModel : Screen
     {
+        public void Update()
+        {
+
+        }
     }
 }

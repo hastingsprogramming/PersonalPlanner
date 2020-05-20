@@ -12,29 +12,33 @@
         <Grid.RowDefinitions>
             <RowDefinition Height="250" />
             <RowDefinition Height="1*" />
-            <RowDefinition Height="50" />
-            <RowDefinition Height="100" />
         </Grid.RowDefinitions>
         <Grid.ColumnDefinitions>
             <ColumnDefinition Width="1*" />
             <ColumnDefinition Width="50" />
-            <ColumnDefinition Width="1*" />
+            <ColumnDefinition Width="2*" />
         </Grid.ColumnDefinitions>
 
         <TextBlock Text="Events" 
                    Grid.Row="0" Grid.Column="0" Grid.ColumnSpan="3"
                    FontSize="100" VerticalAlignment="Center" Padding="50 0 0 0"/>
-        <materialDesign:Card Name="EventCard"
+        <materialDesign:Card Name="EventsCard"
                              Grid.Row="1" Grid.RowSpan="3" Grid.Column="0" Margin="50 0 0 50"
                              BorderBrush="Red" BorderThickness="1" UniformCornerRadius="5">
-            <StackPanel x:Name="EventStacker" Background="Transparent" Margin="25"/>
+            <Grid>
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="1*" />
+                    <RowDefinition Height="auto" />
+                </Grid.RowDefinitions>
+                <StackPanel x:Name="EventControls" Background="Transparent" Margin="25" Grid.Row="0"/>
+                <Button x:Name="AddEvent" Content="Add Event"
+                        Grid.Row="1" Margin="100 25" VerticalAlignment="Center"
+                        Style="{DynamicResource MaterialDesignRaisedAccentButton}" FontSize="20"/>
+            </Grid>
         </materialDesign:Card>
         <materialDesign:Card Name="EventDetailsCard"
-                             Grid.Row="1" Grid.Column="2" Margin="0 0 50 0"
+                             Grid.Row="1" Grid.Column="2" Margin="0 0 50 50"
                              BorderBrush="Red" BorderThickness="1" UniformCornerRadius="5">
         </materialDesign:Card>
-        <Button x:Name="AddEvent" Content="Add Event"
-                Grid.Row="3" Grid.Column="2" Margin="100 0 150 50" VerticalAlignment="Center"
-                Style="{DynamicResource MaterialDesignRaisedAccentButton}" Height="100" FontSize="26"/>
     </Grid>
 </UserControl>

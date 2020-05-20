@@ -2,7 +2,7 @@
 
 namespace PersonalPlanner.ViewModels
 {
-    class TwoButtonDialogViewModel : Screen
+    public class TwoButtonDialogViewModel : Screen
     {
         private string _title;
         private string _message;
@@ -29,8 +29,6 @@ namespace PersonalPlanner.ViewModels
             get { return _cancelButtonText; }
             set { _cancelButtonText = value; }
         }
-
-
 
         public TwoButtonDialogViewModel(string message) => new TwoButtonDialogViewModel("", message, "Okay", "Cancel");
         public TwoButtonDialogViewModel(string title, string message) => new TwoButtonDialogViewModel(title, message, "Okay", "Cancel");

@@ -31,7 +31,7 @@
                         <RowDefinition Height="auto" />
                     </Grid.RowDefinitions>
                     <Image Source="../Icons/UserMainIcon.png" Height="150" Width="150" Grid.Row="0" />
-                    <TextBlock x:Name="Name" Text="User's Name" Grid.Row="2" HorizontalAlignment="Center" FontSize="24"/>
+                    <TextBlock x:Name="UsersName" Text="User's Name" Grid.Row="2" HorizontalAlignment="Center" FontSize="24"/>
                 </Grid>
             </Border>
             <Button x:Name="DashboardShow"

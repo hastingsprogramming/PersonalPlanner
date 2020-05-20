@@ -2,7 +2,11 @@
 
 namespace PersonalPlanner.ViewModels
 {
-    class NotesViewModel : Screen
+    public class NotesViewModel : Screen
     {
+        public void Update()
+        {
+
+        }
     }
 }

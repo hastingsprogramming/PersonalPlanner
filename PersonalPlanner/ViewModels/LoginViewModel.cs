@@ -1,5 +1,6 @@
 ﻿using Caliburn.Micro;
 using PersonalPlanner.Models;
+using System;
 using System.Linq;
 
 namespace PersonalPlanner.ViewModels
@@ -63,11 +64,12 @@ namespace PersonalPlanner.ViewModels
             {
                 User user = User.GetUser(Username, App.GetSha256Hash(Password));
                 if (user == null) throw new System.Exception();
-                ((App)(App.Current)).currentUser = user;
+                App.currentUser = user;
                 this.TryClose(true);
             }
-            catch
+            catch (Exception ex)
             {
+                //System.Windows.MessageBox.Show(ex.Message);
                 System.Windows.MessageBox.Show("There was an issue with your data");
             }
         }

@@ -25,7 +25,16 @@
         <materialDesign:Card Name="ProjectsCard"
                              Grid.Row="1" Grid.RowSpan="3" Grid.Column="0" Margin="50 0 0 50"
                              BorderBrush="Red" BorderThickness="1" UniformCornerRadius="5">
-            <StackPanel x:Name="FinanceStacker" Margin="25"/>
+            <Grid>
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="1*" />
+                    <RowDefinition Height="auto" />
+                </Grid.RowDefinitions>
+                <StackPanel x:Name="FinanceStacker" Margin="25" Grid.Row="0"/>
+                <Button x:Name="AddProject" Content="Add Project"
+                    Grid.Row="1" Margin="100 25" VerticalAlignment="Center"
+                    Style="{DynamicResource MaterialDesignRaisedAccentButton}" FontSize="20"/>
+            </Grid>
         </materialDesign:Card>
         <materialDesign:Card Name="ProjectDetailsCard"
                              Grid.Row="1" Grid.Column="2" Margin="0 0 50 50"

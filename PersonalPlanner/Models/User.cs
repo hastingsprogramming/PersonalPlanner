@@ -1,8 +1,5 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Data;
-using System.Windows.Controls.Primitives;
-using System.Windows.Navigation;
 using static PersonalPlanner.dataDataSet;
 
 namespace PersonalPlanner.Models
@@ -13,24 +10,84 @@ namespace PersonalPlanner.Models
         public string Password { get; set; }
         public string FirstName { get; set; }
         public string LastName { get; set; }
-        public List<FinanceActivity> CashFlow { get; set; }
-        public List<PersonalEvent> Events { get; set; }
-        public List<PersonalNote> Notes { get; set; }
-        public List<Project> Projects { get; set; }
+        public List<FinanceActivity> CashFlow
+        {
+            get
+            {
+                var allFinance = new List<FinanceActivity>();
+                var adapter = new dataDataSetTableAdapters.FinanceActivitiesTableAdapter();
+                foreach (var activity in adapter.GetData().Select(string.Format("User = '{0}'", this.Username)))
+                {
+                    allFinance.Add(new FinanceActivity(activity as FinanceActivitiesRow));
+                }
+
+                return allFinance;
+            }
+        }
+        public List<PersonalEvent> Events
+        {
+            get
+            {
+                var allEvents = new List<PersonalEvent>();
+                var adapter = new dataDataSetTableAdapters.EventsTableAdapter();
+                foreach (var pEvent in adapter.GetData().Select(string.Format("User = '{0}'", this.Username)))
+                {
+                    allEvents.Add(new PersonalEvent(pEvent as EventsRow));
+                }
+
+                return allEvents;
+            }
+        }
+        public List<PersonalNote> Notes {
+            get
+            {
+                var allNotes = new List<PersonalNote>();
+                var adapter = new dataDataSetTableAdapters.PersonalNotesTableAdapter();
+                foreach (var note in adapter.GetData().Select(string.Format("User = '{0}'", this.Username)))
+                {
+                    allNotes.Add(new PersonalNote(note as PersonalNotesRow));
+                }
+
+                return allNotes;
+            }
+        }
+        public List<Project> Projects { 
+            get
+            {
+                var allProjects = new List<Project>();
+                var adapter = new dataDataSetTableAdapters.ProjectsTableAdapter();
+                foreach (var project in adapter.GetData().Select(string.Format("User = '{0}'", this.Username)))
+                {
+                    allProjects.Add(new Project(project as ProjectsRow));
+                }
+
+                return allProjects;
+            } }
         public DateTime Created { get; set; }
         public DateTime Updated { get; set; }
         public DateTime Removed { get; set; }
 
-        public User(dataDataSet.UsersRow userData)
+        public int[] LastMonthCashFlow
+        {
+            get
+            {
+                int[] sums = { 0, 0 };
+                foreach (FinanceActivity activity in CashFlow)
+                {
+                    if (activity.ActivityDate < DateTime.Now.Subtract(new TimeSpan(28, 0, 0, 0))) continue;
+                    sums[0] += activity.MoneyIn;
+                    sums[1] += activity.MoneyOut;
+                }
+                return sums;
+            }
+        }
+
+        public User(UsersRow userData)
         {
             Username = userData.Username;
             Password = userData.Password;
             FirstName = userData.FirstName;
             LastName = userData.LastName;
-            CashFlow = GetCashFlow();
-            Events = GetEvents();
-            Notes = GetNotes();
-            Projects = GetProjects();
             Created = userData.Created;
             Updated = userData.Updated;
             Removed = userData.Removed;
@@ -44,8 +101,6 @@ namespace PersonalPlanner.Models
             adapter.Insert(username, App.GetSha256Hash(password), firstName, lastName, createdTime, createdTime, default);
             return new User((dataDataSet.UsersRow)adapter.GetData().Select($"Username=username")[0]);
         }
-
-        public List<FinanceActivity> GetCashFlow() { return new List<FinanceActivity>(); }
         public List<PersonalEvent> GetEvents() { return new List<PersonalEvent>(); }
         public List<PersonalNote> GetNotes() { return new List<PersonalNote>(); }
         public List<Project> GetProjects() { return new List<Project>(); }

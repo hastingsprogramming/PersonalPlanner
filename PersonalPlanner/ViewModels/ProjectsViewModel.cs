@@ -2,7 +2,11 @@
 
 namespace PersonalPlanner.ViewModels
 {
-    class ProjectsViewModel : Screen
+    public class ProjectsViewModel : Screen
     {
+        public void Update()
+        {
+
+        }
     }
 }

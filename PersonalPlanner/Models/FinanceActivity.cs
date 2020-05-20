@@ -1,10 +1,12 @@
 ﻿using System;
+using System.Linq;
 
 namespace PersonalPlanner.Models
 {
 	public class FinanceActivity : IDataModel
     {
-		public int ID { get; set; }
+        #region Properties
+        public int ID { get; set; }
 		public string Title { get; set; }
 		public string Description { get; set; }
 		public int MoneyIn { get; set; }
@@ -13,8 +15,9 @@ namespace PersonalPlanner.Models
 		public DateTime Created { get; set; }
 		public DateTime Updated { get; set; }
 		public DateTime Removed { get; set; }
+        #endregion
 
-		public FinanceActivity(dataDataSet.FinanceActivitiesRow activityData)
+        public FinanceActivity(dataDataSet.FinanceActivitiesRow activityData)
 		{
 			ID = activityData.ID;
 			Title = activityData.Title;
@@ -31,8 +34,9 @@ namespace PersonalPlanner.Models
 		{
 			var adapter = new dataDataSetTableAdapters.FinanceActivitiesTableAdapter();
 			var createdTime = DateTime.Now;
-			adapter.Insert(user.Username, title, description, moneyIn, moneyOut, activityDate, createdTime, createdTime, default);
-			return new FinanceActivity((dataDataSet.FinanceActivitiesRow)adapter.GetData().Select("Created="+createdTime.ToString())[0]);
+			adapter.Insert(user.Username, title, description, moneyIn, moneyOut, activityDate, createdTime, createdTime, DateTime.MinValue);
+			FinanceActivity fa = new FinanceActivity(adapter.GetData().Last()); ;
+			return fa;
 		}
 
 		public void Update(string _title, string _description, int _moneyIn, int _moneyOut, DateTime _activityDate)
